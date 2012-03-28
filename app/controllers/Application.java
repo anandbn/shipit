@@ -18,11 +18,11 @@ public class Application extends Controller {
 		render();
 	}
 	public static void getShippingRate(String zipCode,String jsoncallback) throws SAXException, IOException, ParserConfigurationException {
-		String rate,status="Success";
+		String rate,status=null;
 		try{
 			rate= FedexServicesHelper.getShippingRateFor(zipCode);
 		}catch(Exception ex){
-			status="Fail";
+			
 			rate="-1";
 		}
 		if(jsoncallback!=null && jsoncallback.trim().length()>0){

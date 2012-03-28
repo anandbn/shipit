@@ -1,6 +1,8 @@
 ${jsoncallback}(
 	{
-		"status":"${status}",
+		#{if ( status != null && status.trim().length()>0) }
+			"status":"${status}",
+		#{/if}
 		"rate":${rate}
 	}
 )

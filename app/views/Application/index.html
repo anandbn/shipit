@@ -21,19 +21,14 @@
                       zipCode: $("#zipCode").val()
                     },
                     function(data) {
-                      demobox.empty();
-                      if(data.status=='Success'){
-                      	demobox.html("<div class='alert alert-success'>Fedex Rate:<b>"+data.rate+"</b></div>");
-                      }else{
-                      	demobox.html("<div class='alert alert-error'>Error occurred fetching Shipping Quote</div>");
-                      }
+                      demobox.html("<div class='alert alert-success'>Fedex Rate:<b>"+data.rate+"</b></div>");
                       $('#' + id + ' #loading').hide();
                     });
                 },
  
                 reset: function(id)
                 {
-                    
+                 	demobox.empty();   
                 }
             }
         }
