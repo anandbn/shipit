@@ -94,9 +94,9 @@ public class FedexServicesHelper {
 									   .setHeader("Content-Type", "application/soap+xml")
 									   .body(String.format(SHIP_RATE_REQUEST_XML,zipCode))
 									   .post().getString();
-		System.out.println(">>>>>>>>>> SOAP REQUEST SART");
+		System.out.println(">>>>>>>>>> SOAP RESPONSE SART");
 		System.out.println(respXml);
-		System.out.println(">>>>>>>>>> SOAP REQUEST END");
+		System.out.println(">>>>>>>>>> SOAP RESPONSE END");
 		DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
 		factory.setNamespaceAware(true); // never forget this!
 		DocumentBuilder builder = factory.newDocumentBuilder();

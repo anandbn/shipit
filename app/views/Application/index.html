@@ -1,33 +1,46 @@
-#{extends 'main.html'/}
-<body>
-<div class="row">
-    <div class="span8 offset2">
-<div class="alert alert-success" id="shippingRate">
+#{extends 'main.html' /}
+#{set 'moreScripts'}
+    <script src="http://code.jquery.com/jquery-latest.js"></script>
+    <script src="http://www.jquery4u.com/scripts/function-demos-script.js"></script>
+ 
+    <script type="text/javascript">
+ 
+    var JQFUNCS =
+    {
+        runFunc:
+        {
+            /* ------------------------------ jsonp Demo ------------------------------ */
+            "jsonp":
+            {
+                run: function(id)
+                {
+                    var demobox = $('#'+id);
+                    $.getJSON("http://shipit.herokuapp.com/shippingRate?jsoncallback=?",
+                    {
+                      zipCode: $("#zipCode").val()
+                    },
+                    function(data) {
+                      demobox.empty();
+                      demobox.html("<div class='alert alert-success'>Fedex Rate:<b>"+data.rate+"</b></div>");
+                    });
+                },
+ 
+                reset: function(id)
+                {
+                    
+                }
+            }
+        }
+    }
+ 
+    </script>
+#{/set} 
 
-</div>
-</div>
 <div class="row">
-    <div class="span8 offset2">
-		<form class="well">
-  		<button class="btn btn-large" onclick="populateShippingRate();">Get Shipping Rate</button>
-  		<label>Zip Code <input name="zipCode" id="zipCode"/></label>
-		</form>
-	</div>
+<div class="span8 offset-2">
+<p><label>Zip Code <input name="zipCode" id="zipCode"/></label></p>
+<p class="example">Demo: JSON P to load data for a Fedex Shipping Rate calculator</p>
+<p><a href="#" id="jsonp-demobtn" class="demobtn btn actionr btn-success btn large">Get Shipping Rate</a> <a href="#" id="jsonp-resetbtn" class="resetbtn btn btn-danger actionr" style="display: none;">Reset</a></p>
+<div class="demoarea" id="jsonp" style="display:inline-block" class="well span8 offset-2"></div>
+</div> 
 </div>
-<script>
-function populateShippingRate(){
-	$.getJSON("http://shipit.herokuapp.com/shippingRate?jsoncallback=?",
-            {    
-  	          zipCode: $('#zipCode').val()
-            },
-  			function(data) {
-  				alert(data);
-    			console.log(data);
-   				 $("#shippingRate").html("Rate from Fedex = <b>"+data.rate+"</b>");
-  			}
-  	);
-}
-</script>
-
-</body>
-</html>
