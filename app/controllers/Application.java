@@ -19,7 +19,7 @@ public class Application extends Controller {
     	String rate = FedexServicesHelper.getShippingRateFor(zipCode);
         if(jsoncallback!=null && jsoncallback.trim().length()>0){
         	response.contentType="application/x-javascript";
-        	renderTemplate("Application/index.jsonp",jsoncallback,rate);
+        	renderTemplate("Application/shippingRate.jsonp",jsoncallback,rate);
         }else{
         	render(rate);
         }
