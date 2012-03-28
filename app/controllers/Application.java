@@ -12,11 +12,11 @@ import play.mvc.Controller;
 
 public class Application extends Controller {
 
-	public static void index(String zipCode,String jsoncallBack) throws SAXException, IOException, ParserConfigurationException {
+	public static void index(String zipCode,String jsoncallback) throws SAXException, IOException, ParserConfigurationException {
     	String rate = FedexServicesHelper.getShippingRateFor(zipCode);
-        if(jsoncallBack!=null && jsoncallBack.trim().length()>0){
+        if(jsoncallback!=null && jsoncallback.trim().length()>0){
         	response.contentType="application/x-javascript";
-        	renderTemplate("Application/index.jsonp",jsoncallBack,rate);
+        	renderTemplate("Application/index.jsonp",jsoncallback,rate);
         }else{
         	render(rate);
         }
