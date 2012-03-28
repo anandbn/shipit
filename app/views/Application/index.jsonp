@@ -1,4 +1,4 @@
-${jsonCallBack}(
+${jsoncallback}(
 	{
 		"rate":${rate}
 	}

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>img{ height: 100px; float: left; }</style>
+  <script src="http://code.jquery.com/jquery-latest.js"></script>
+</head>
+<body>
+  <div id="shippingRate">
+
+  </div>
+<script>
+$.getJSON("http://shipit.herokuapp.com/?jsoncallback=?",
+  {    
+  	zipCode: "94105"
+  },
+  function(data) {
+  	alert(data);
+    console.log(data);
+    $("#shippingRate").html("Rate from Fedex = <b>"+data.rate+"</b>");
+  });
+</script>
+
+</body>
+</html>
