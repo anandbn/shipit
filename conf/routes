@@ -3,8 +3,8 @@
 # ~~~~
 
 # Home page
-GET     /                                          Application.index
-
+GET     /                                          Application.testJsonP
+GET 	/shippingRate							   Application.getShippingRate
 
 # Ignore favicon requests
 GET        /favicon.ico                            404

@@ -1,23 +1,32 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <style>img{ height: 100px; float: left; }</style>
-  <script src="http://code.jquery.com/jquery-latest.js"></script>
-</head>
+#{extends 'main.html'/}
 <body>
-  <div id="shippingRate">
+<div class="row">
+    <div class="span8 offset2">
+<div class="alert alert-success" id="shippingRate">
 
-  </div>
+</div>
+</div>
+<div class="row">
+    <div class="span8 offset2">
+		<form class="well">
+  		<button class="btn btn-large" onclick="populateShippingRate();">Get Shipping Rate</button>
+  		<label>Zip Code <input name="zipCode" id="zipCode"/></label>
+		</form>
+	</div>
+</div>
 <script>
-$.getJSON("http://shipit.herokuapp.com/?jsoncallback=?",
-  {    
-  	zipCode: "94105"
-  },
-  function(data) {
-  	alert(data);
-    console.log(data);
-    $("#shippingRate").html("Rate from Fedex = <b>"+data.rate+"</b>");
-  });
+function populateShippingRate(){
+	$.getJSON("http://shipit.herokuapp.com/shippingRate?jsoncallback=?",
+            {    
+  	          zipCode: $('#zipCode').val()
+            },
+  			function(data) {
+  				alert(data);
+    			console.log(data);
+   				 $("#shippingRate").html("Rate from Fedex = <b>"+data.rate+"</b>");
+  			}
+  	);
+}
 </script>
 
 </body>
