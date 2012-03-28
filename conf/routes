@@ -3,7 +3,7 @@
 # ~~~~
 
 # Home page
-GET     /                                          Application.testJsonP
+GET     /                                          Application.index
 GET 	/shippingRate							   Application.getShippingRate
 
 # Ignore favicon requests
