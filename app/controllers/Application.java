@@ -12,7 +12,10 @@ import play.mvc.Controller;
 
 public class Application extends Controller {
 
-	public static void index(String zipCode,String jsoncallback) throws SAXException, IOException, ParserConfigurationException {
+	public static void index(){
+		render();
+	}
+	public static void getShippingRate(String zipCode,String jsoncallback) throws SAXException, IOException, ParserConfigurationException {
     	String rate = FedexServicesHelper.getShippingRateFor(zipCode);
         if(jsoncallback!=null && jsoncallback.trim().length()>0){
         	response.contentType="application/x-javascript";
@@ -21,8 +24,4 @@ public class Application extends Controller {
         	render(rate);
         }
     }
-	
-	public static void testJsonP(){
-		render();
-	}
 }
