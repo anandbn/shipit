@@ -4,7 +4,9 @@
 
 # Home page
 GET     /                                          Application.index
+GET     /v2                                        Application.indexv2
 GET 	/shippingRate							   Application.getShippingRate
+GET 	/shippingRatev2							   Application.getShippingRatev2
 
 # Ignore favicon requests
 GET        /favicon.ico                            404

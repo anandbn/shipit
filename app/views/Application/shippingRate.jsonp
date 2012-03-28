@@ -1,5 +1,6 @@
 ${jsoncallback}(
 	{
+		"status":"${status}",
 		"rate":${rate}
 	}
 )

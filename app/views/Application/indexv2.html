@@ -16,9 +16,16 @@
                 {
                     var demobox = $('#'+id);
                     demobox.html('<img id="loading" src="@{'/public//images/loading.gif'}">');
-                    $.getJSON("http://shipit.herokuapp.com/shippingRate?jsoncallback=?",
+                    $.getJSON("http://shipit.herokuapp.com/shippingRatev2?jsoncallback=?",
                     {
-                      zipCode: $("#zipCode").val()
+                      street: $("#street").val(),
+                      city: $("#city").val(),
+                      state: $("#state").val(),
+                      zipCode: $("#zipCode").val(),
+                      weight: $("#weight").val(),
+                      length: $("#length").val(),
+                      width: $("#width").val(),
+                      height: $("#height").val(),
                     },
                     function(data) {
                       demobox.empty();
@@ -44,7 +51,14 @@
 
 <div class="row well">
 <div class="span8 offset-2">
+<p><label>Street <input name="street" id="street"/></label></p>
+<p><label>City<input name="city" id="city"/></label></p>
+<p><label>State <input name="state" id="state"/></label></p>
 <p><label>Zip Code <input name="zipCode" id="zipCode"/></label></p>
+<p><label>Weight <input name="weight" id="weight"/></label></p>
+<p><label>Length <input name="length" id="length"/></label></p>
+<p><label>Width <input name="length" id="length"/></label></p>
+<p><label>Height <input name="height" id="height"/></label></p>
 <p class="example">Demo: JSON P to load data for a Fedex Shipping Rate calculator</p>
 <p><a href="#" id="jsonp-demobtn" class="demobtn btn actionr btn-success btn large">Get Shipping Rate</a> <a href="#" id="jsonp-resetbtn" class="resetbtn btn btn-danger actionr" style="display: none;">Reset</a></p>
 <div class="demoarea" id="jsonp" style="display:inline-block" class="well span8 offset-2"></div>
